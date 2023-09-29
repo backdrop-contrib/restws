@@ -30,7 +30,7 @@ class RestWSBasicAuthTestCase extends BackdropWebTestCase {
    */
   public function testCachePoisoning() {
     // Enable page caching.
-    variable_set('cache', 1);
+    config_set('system.core', 'cache', 1);
 
     // Allow anyone to access the user resource.
     user_role_grant_permissions(BACKDROP_ANONYMOUS_RID, array('access resource user', 'access user profiles'));

@@ -9,7 +9,8 @@
  * Implements hook_uninstall().
  */
 function restws_basic_auth_uninstall() {
-  variable_del('restws_basic_auth_user_regex');
+  // Remove the username regex.
+  config_set('restws.settings', 'restws_basic_auth_user_regex', NULL);
 }
 
 /**
@@ -17,5 +18,5 @@ function restws_basic_auth_uninstall() {
  */
 function restws_basic_auth_update_7100() {
   // Set the username regex to accept all.
-  variable_set('restws_basic_auth_user_regex', '/.*/');
+  config_set('restws.settings', 'restws_basic_auth_user_regex', '/.*/');
 }
