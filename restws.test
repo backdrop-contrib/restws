@@ -362,7 +362,7 @@ class RestWSTestCase extends BackdropWebTestCase {
     // Simulate a cache poisoning attack where JSON could get into the page
     // cache.
     // Grant node resource access to anonymous users.
-    user_role_grant_permissions(BACKDROP_ANONYMOUS_RID, array('access resource node'));
+    user_role_grant_permissions(BACKDROP_ANONYMOUS_ROLE, array('access resource node'));
     // Enable page caching.
     config_set('system.core', 'cache', 1);
     // Reset cURL here to delete any stored request settings.
