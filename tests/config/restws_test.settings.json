@@ -1,4 +1,5 @@
 {
-"_config_name": "restws_test.settings",
-"restws_test_menu_path": "foo"
+  "_config_name": "restws_test.settings",
+  "restws_test_menu_path": "foo"
 }
+
