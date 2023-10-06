@@ -7,16 +7,6 @@
 
 class RestWSBasicAuthTestCase extends BackdropWebTestCase {
 
-  /**
-   * {@inheritdoc}
-   */
-  public static function getInfo() {
-    return array(
-      'name' => 'RESTWS Basic Auth',
-      'description' => 'Tests page caching with Basic Authentication.',
-      'group' => 'Services',
-    );
-  }
 
   /**
    * {@inheritdoc}
@@ -104,4 +94,5 @@ class RestWSBasicAuthTestCase extends BackdropWebTestCase {
 
     return $response;
   }
+
 }

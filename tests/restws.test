@@ -7,13 +7,6 @@
 
 class RestWSTestCase extends BackdropWebTestCase {
 
-  public static function getInfo() {
-    return array(
-      'name' => 'RESTful web services tests',
-      'description' => 'Tests CRUD operations via the REST web service.',
-      'group' => 'Services',
-    );
-  }
 
   public function setUp() {
     parent::setUp('restws');
@@ -544,7 +537,6 @@ class RestWSTestCase extends BackdropWebTestCase {
     foreach (array('bar', 'foo/bar', 'foo/bar/node', 'api-v1.2', 'this/is/a/really/long/path') as $menu_path) {
       // Register the menu_path for this test.
       config_set('restws.settings', 'restws_test_menu_path', $menu_path);
-      state_set('menu_rebuild_needed', TRUE);
 
       // Verify that the query uri is working.
       $result = $this->backdropGet($menu_path . '.json');
@@ -646,4 +638,5 @@ class RestWSTestCase extends BackdropWebTestCase {
 
     return $response;
   }
+
 }

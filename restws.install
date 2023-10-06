@@ -5,9 +5,10 @@
  * Install, update, and uninstall functions for the RESTWS module.
  */
 
-/**
- * Convert variables to config
- */
+function restws_update_last_removed() {
+  return 7002;
+}
+
 function restws_update_1000() {
   // Migrate variables to config.
   $config = config('restws.settings');

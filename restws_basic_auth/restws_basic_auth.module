@@ -6,6 +6,18 @@
  */
 
 /**
+ * Implementation of hook_config_info().
+ */
+function restws_basic_auth_config_info() {
+    $prefixes['restws_basic_auth.settings'] = array(
+        'label' => t('RestWS Basic Auth settings'),
+        'group' => t('Configuration'),
+    );
+    return $prefixes;
+}
+
+
+/**
  * Implements hook_init().
  *
  * Performs a user login from the credentials in the HTTP Authorization header.
@@ -20,7 +32,7 @@ function restws_basic_auth_init() {
     list($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW']) = explode(':', $authentication);
   }
   if (user_is_anonymous() && isset($_SERVER['PHP_AUTH_USER']) && isset($_SERVER['PHP_AUTH_PW'])) {
-    // Login only user names that match a pattern.
+    // Login only usernames that match a pattern.
     $user_regex = config_get('restws_basic_auth.settings', 'restws_basic_auth_user_regex');
     if (preg_match($user_regex, $_SERVER['PHP_AUTH_USER'])) {
       $form_state = array();
@@ -33,6 +45,10 @@ function restws_basic_auth_init() {
         // Always make sure to disable the page cache after we authenticated the
         // user so that a response never gets into the page cache.
         backdrop_page_is_cacheable(FALSE);
+
+        // Redetermine the page callback for restws calls like node/1.json
+        // and user/1.json.
+        _restws_determine_router_item();
       }
       else {
         // Clear the login form error and remove the login failure message.
@@ -53,15 +69,4 @@ function restws_basic_auth_restws_request_alter(array &$request) {
   // This is necessary because the page cache system only looks at session
   // cookies, but not at HTTP Basic Auth headers.
   backdrop_page_is_cacheable(FALSE);
-}
-
-/**
- * Implementation of hook_config_info().
- */
-function restws_basic_auth_config_info() {
-  $prefixes['restws_basic_auth.settings'] = array(
-    'label' => t('RestWS Basic Auth settings'),
-    'group' => t('Configuration'),
-  );
-  return $prefixes;
 }

@@ -7,7 +7,6 @@
  * Backdrop manner.
  */
 
-
 /**
  * @defgroup restws RestWS module integrations.
  *
@@ -258,4 +257,5 @@ class MyModuleBookResourceController implements RestWSResourceControllerInterfac
   public function resource() {
     return 'mymodule_book';
   }
+
 }

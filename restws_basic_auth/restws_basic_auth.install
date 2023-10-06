@@ -6,14 +6,17 @@
  */
 
 /**
- * Migrate variables to config.
+ * Implements hook_uninstall().
  */
-function restws_basic_auth_update_1000() {
-  // Migrate variables to config.
-  $config = config('restws.settings');
-  $config->set('restws_basic_auth_user_regex', update_variable_get('restws_basic_auth_user_regex', '/^restws.*/'));
-  $config->save();
+function restws_basic_auth_uninstall() {
+  // Remove the username regex.
+  config_set('restws_basic_auth.settings', 'restws_basic_auth_user_regex', NULL);
+}
 
-  // Delete variables.
-  update_variable_del('restws_basic_auth_user_regex');
+/**
+ * Set the user name regex to accept all for backwards compatibility.
+ */
+function restws_basic_auth_update_1100() {
+  // Set the username regex to accept all.
+  config_set('restws_basic_auth.settings', 'restws_basic_auth_user_regex', '/.*/');
 }
