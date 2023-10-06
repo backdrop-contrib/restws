@@ -7,13 +7,6 @@
 
 class RestWSTestCase extends BackdropWebTestCase {
 
-  public static function getInfo() {
-    return array(
-      'name' => 'RESTful web services tests',
-      'description' => 'Tests CRUD operations via the REST web service.',
-      'group' => 'Services',
-    );
-  }
 
   public function setUp() {
     parent::setUp('restws');

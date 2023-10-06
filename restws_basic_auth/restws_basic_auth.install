@@ -10,7 +10,7 @@
  */
 function restws_basic_auth_uninstall() {
   // Remove the username regex.
-  config_set('restws.settings', 'restws_basic_auth_user_regex', NULL);
+  config_set('restws_basic_auth.settings', 'restws_basic_auth_user_regex', NULL);
 }
 
 /**
@@ -18,5 +18,5 @@ function restws_basic_auth_uninstall() {
  */
 function restws_basic_auth_update_1100() {
   // Set the username regex to accept all.
-  config_set('restws.settings', 'restws_basic_auth_user_regex', '/.*/');
+  config_set('restws_basic_auth.settings', 'restws_basic_auth_user_regex', '/.*/');
 }

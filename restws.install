@@ -5,20 +5,8 @@
  * Install, update, and uninstall functions for the RESTWS module.
  */
 
-
-/**
- * Empty update to force a cache clear.
- */
-function restws_update_1002() {
-
-}
-
-/**
- * Clear the page cache to throw out any RESTWS responses that could be
- * delivered on HTML requests.
- */
-function restws_update_1001() {
-  cache_clear_all(NULL, 'cache_page');
+function restws_update_last_removed() {
+  return 7002;
 }
 
 function restws_update_1000() {

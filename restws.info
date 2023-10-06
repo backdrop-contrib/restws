@@ -1,5 +1,6 @@
 name = RESTful web services
 description = Provides RESTful web services.
 backdrop = 1.x
+type = module
 
 dependencies[] = entity_plus
